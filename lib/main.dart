@@ -112,6 +112,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            TextButton(
+              child: const Text("open new route123"),
+              onPressed: () async {
+                //导航到新路由
+                var result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const NewRoute(
+                      text: "我是提示xxxx",
+                    );
+                  }),
+                );
+                // ignore: avoid_print
+                print("路由返回值: $result");
+              },
+            ),
           ],
         ),
       ),
@@ -120,6 +136,38 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class NewRoute extends StatelessWidget {
+  // const NewRoute({super.key, required String text});
+  const NewRoute({
+    super.key,
+    required this.text, // 接收一个text参数
+  });
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("New route"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(text),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context, "我是返回值"),
+                child: const Text("返回"),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
