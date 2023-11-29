@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './random_words_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,14 +114,14 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             TextButton(
-              child: const Text("open new route123"),
+              child: const Text("open new route"),
               onPressed: () async {
                 //导航到新路由
                 var result = await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
                     return const NewRoute(
-                      text: "我是提示xxxx",
+                      text: "我是上个页面的传参哦~",
                     );
                   }),
                 );
@@ -128,6 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("路由返回值: $result");
               },
             ),
+            const RandomWordsWidget(),
+            // Image.asset('assets/image/test.jpg', width: 100.0)
+            Image.network('https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',width: 300.0)
           ],
         ),
       ),
