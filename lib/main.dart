@@ -131,7 +131,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const RandomWordsWidget(),
             // Image.asset('assets/image/test.jpg', width: 100.0)
-            Image.network('https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',width: 300.0)
+            Image.network(
+                'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',
+                width: 300.0)
           ],
         ),
       ),
@@ -145,7 +147,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class NewRoute extends StatelessWidget {
-  // const NewRoute({super.key, required String text});
   const NewRoute({
     super.key,
     required this.text, // 接收一个text参数
