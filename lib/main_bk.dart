@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import './random_words_widget.dart';
-import 'common/global.dart';
+import 'widgets/random_words.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-void main() => Global.init().then((e) => runApp(const MyApp()));
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -131,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("路由返回值: $result");
               },
             ),
-            const RandomWordsWidget(),
+            const RandomWords(),
             // Image.asset('assets/image/test.jpg', width: 100.0)
             Image.network(
                 'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',
