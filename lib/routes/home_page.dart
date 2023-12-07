@@ -72,7 +72,7 @@ class _HomeRouteState extends State<HomeRoute> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             TextButton(
-              child: const Text("open new route"),
+              child: const Text("open login page"),
               onPressed: () => Navigator.of(context).pushNamed("login"),
               // onPressed: () async {
               //   //导航到新路由

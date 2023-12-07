@@ -1,5 +1,7 @@
 // import 'package:provider/provider.dart';
 
+import 'package:flutter/services.dart';
+
 import '../index.dart';
 
 class LoginRoute extends StatefulWidget {
@@ -46,6 +48,9 @@ class _LoginRouteState extends State<LoginRoute> {
                     hintText: '用户名',
                     prefixIcon: Icon(Icons.person),
                   ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.deny(RegExp('[\\s]')),
+                  ],
                   // 校验用户名（不能为空）
                   validator: (v) {
                     return v == null || v.trim().isNotEmpty ? null : '用户名不能为空';
@@ -67,9 +72,13 @@ class _LoginRouteState extends State<LoginRoute> {
                       },
                     )),
                 obscureText: !pwdShow,
+                inputFormatters: [
+                  FilteringTextInputFormatter.deny(RegExp('[\\s]')),
+                ],
                 //校验密码（不能为空）
                 validator: (v) {
-                  return v == null || v.trim().isNotEmpty ? null : '密码必填';
+                  // return v == null || v.trim().isNotEmpty ? null : '密码必填';
+                  return v!.trim().length > 5 ? null : "密码不能少于6位";
                 },
               ),
               Padding(
