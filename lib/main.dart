@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'index.dart';
+export 'models/index.dart';
 import 'routes/index.dart';
 
 void main() => runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // Provider<Something>(create: (_) => Something()),
+        // ChangeNotifierProvider(create: (_) => UserModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
