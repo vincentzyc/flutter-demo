@@ -1,4 +1,6 @@
-import '../index.dart';
+import 'package:flutter/material.dart';
+
+import '../models/repo.dart';
 
 class RepoItem extends StatefulWidget {
   // 将`repo.id`作为RepoItem的默认key
@@ -13,7 +15,7 @@ class RepoItem extends StatefulWidget {
 class _RepoItemState extends State<RepoItem> {
   @override
   Widget build(BuildContext context) {
-    var subtitle;
+    String subtitle = '子标题';
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Material(
@@ -41,7 +43,7 @@ class _RepoItemState extends State<RepoItem> {
                   widget.repo.owner.login,
                   textScaleFactor: .9,
                 ),
-                subtitle: subtitle,
+                subtitle: Text(subtitle),
                 trailing: Text(widget.repo.language ?? '--'),
               ),
               // 构建项目标题和简介
