@@ -1,13 +1,13 @@
 // import '../index.dart';
 
 // class ProfileChangeNotifier extends ChangeNotifier {
-  // Profile get _profile => Global.profile;
+// Profile get _profile => Global.profile;
 
-  // @override
-  // void notifyListeners() {
-  //   Global.saveProfile(); //保存Profile变更
-  //   super.notifyListeners(); //通知依赖的Widget更新
-  // }
+// @override
+// void notifyListeners() {
+//   Global.saveProfile(); //保存Profile变更
+//   super.notifyListeners(); //通知依赖的Widget更新
+// }
 // }
 
 import 'package:flutter/material.dart';
@@ -15,17 +15,15 @@ import 'package:flutter/material.dart';
 import '../models/index.dart';
 
 class UserModel extends ChangeNotifier {
-  User? get user => null;
+  User? user;
 
   // APP是否登录(如果有用户信息，则证明登录过)
   bool get isLogin => user != null;
 
   //用户信息发生变化，更新用户信息并通知依赖它的子孙Widgets更新
-  // set user(User? user) {
-  //   if (user?.login != _profile.user?.login) {
-  //     _profile.lastLogin = _profile.user?.login;
-  //     _profile.user = user;
-  //     notifyListeners();
-  //   }
-  // }
+  set setUser(User? user) {
+    user = user;
+    // 通知监听器（订阅者），重新构建InheritedProvider， 更新状态。
+    notifyListeners();
+  }
 }
