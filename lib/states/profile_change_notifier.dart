@@ -21,7 +21,7 @@ class UserModel extends ChangeNotifier {
   bool get isLogin => user != null;
 
   //用户信息发生变化，更新用户信息并通知依赖它的子孙Widgets更新
-  set setUser(User? user) {
+  void setUser(User? user) {
     user = user;
     // 通知监听器（订阅者），重新构建InheritedProvider， 更新状态。
     notifyListeners();
