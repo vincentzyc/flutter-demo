@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 
+import '../models/user.dart';
+import '../states/index.dart';
 import '../widgets/index.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -12,6 +15,7 @@ class HomeRoute extends StatefulWidget {
   // _HomeRouteState createState() => _HomeRouteState();
   State<HomeRoute> createState() => _HomeRouteState();
 }
+
 class _HomeRouteState extends State<HomeRoute> {
   int _counter = 0;
 
@@ -88,6 +92,10 @@ class _HomeRouteState extends State<HomeRoute> {
               // },
             ),
             const RandomWords(),
+            Builder(builder: (context) {
+              User? user = context.watch<UserModel>().user;
+              return Text("用户名: ${user?.name}");
+            }),
             // Image.asset('assets/image/test.jpg', width: 100.0)
             Image.network(
                 'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',

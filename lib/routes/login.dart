@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_demo/models/user.dart';
+import 'package:provider/provider.dart';
+
+import '../states/index.dart';
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({super.key});
@@ -103,6 +107,8 @@ class _LoginRouteState extends State<LoginRoute> {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
       //  验证通过
+      Provider.of<UserModel>(context)
+          .setUser({'name': _unameController} as User?);
       Navigator.of(context).pop();
       //   if ((_formKey.currentState as FormState).validate()) {
       //     // showLoading(context);
