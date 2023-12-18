@@ -106,9 +106,10 @@ class _LoginRouteState extends State<LoginRoute> {
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
+      UserModel userModel = Provider.of<UserModel>(context, listen: false);
       //  验证通过
-      Provider.of<UserModel>(context)
-          .setUser({'name': _unameController} as User?);
+      print(userModel);
+      userModel.setUserName(_unameController.text);
       Navigator.of(context).pop();
       //   if ((_formKey.currentState as FormState).validate()) {
       //     // showLoading(context);

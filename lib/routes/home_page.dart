@@ -93,8 +93,8 @@ class _HomeRouteState extends State<HomeRoute> {
             ),
             const RandomWords(),
             Builder(builder: (context) {
-              User? user = context.watch<UserModel>().user;
-              return Text("用户名: ${user?.name}");
+              String userName = context.watch<UserModel>().userName;
+              return Text("用户名: $userName");
             }),
             // Image.asset('assets/image/test.jpg', width: 100.0)
             Image.network(
