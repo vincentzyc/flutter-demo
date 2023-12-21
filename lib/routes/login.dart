@@ -89,10 +89,16 @@ class _LoginRouteState extends State<LoginRoute> {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints.expand(height: 55.0),
                   child: ElevatedButton(
-                    // color: Theme.of(context).primaryColor,
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blue),
+                        foregroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                        // 文字大小
+                        textStyle: MaterialStateProperty.all(
+                          const TextStyle(fontSize: 20),
+                        )),
+                    child: const Text("登录"),
                     onPressed: _onLogin,
-                    // textColor: Colors.white,
-                    child: const Text('登录'),
                   ),
                 ),
               ),
