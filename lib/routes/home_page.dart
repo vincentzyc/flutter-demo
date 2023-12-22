@@ -19,19 +19,6 @@ class HomeRoute extends StatefulWidget {
 class _HomeRouteState extends State<HomeRoute> {
   int _counter = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    if (userProvider.username == '') {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        setState(() {
-          Navigator.of(context).pushNamed("login");
-        });
-      });
-    }
-  }
-
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -48,6 +35,12 @@ class _HomeRouteState extends State<HomeRoute> {
     // UserModel userModel = Provider.of<UserModel>(context);
     final userProvider = Provider.of<UserProvider>(context);
 
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
         appBar: AppBar(
           // TRY THIS: Try changing the color here to a specific color (to
@@ -61,66 +54,99 @@ class _HomeRouteState extends State<HomeRoute> {
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
-          child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-            //
-            // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-            // action in the IDE, or press "p" in the console), to see the
-            // wireframe for each widget.
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              TextButton(
-                child: const Text("open login page"),
-                onPressed: () => Navigator.of(context).pushNamed("login"),
-                // onPressed: () async {
-                //   //导航到新路由
-                //   var result = await Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) {
-                //       return const NewRoute(
-                //         text: "我是上个页面的传参哦~",
-                //       );
-                //     }),
-                //   );
-                //   // ignore: avoid_print
-                //   print("路由返回值: $result");
-                // },
-              ),
-              const RandomWords(),
-              Builder(builder: (context) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    "用户名: ${userProvider.username}",
-                    style: const TextStyle(
-                      // 文本的字体大小20，颜色红色
-                      fontSize: 20,
-                      color: Colors.red,
+          child: userProvider.username == ''
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('您还未登录, 请先登录',
+                        // 下边距30
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                          // 下边距30
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints.expand(height: 55.0),
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue),
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                              // 文字大小
+                              textStyle: MaterialStateProperty.all(
+                                const TextStyle(fontSize: 20),
+                              )),
+                          child: const Text("去登录"),
+                          onPressed: () =>
+                              Navigator.of(context).pushNamed("login"),
+                        ),
+                      ),
                     ),
-                  ),
-                );
-              }),
-              // Image.asset('assets/image/test.jpg', width: 100.0)
-              Image.network(
-                  'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',
-                  width: 300.0)
-            ],
-          ),
+                  ],
+                )
+              : Column(
+                  // Column is also a layout widget. It takes a list of children and
+                  // arranges them vertically. By default, it sizes itself to fit its
+                  // children horizontally, and tries to be as tall as its parent.
+                  //
+                  // Column has various properties to control how it sizes itself and
+                  // how it positions its children. Here we use mainAxisAlignment to
+                  // center the children vertically; the main axis here is the vertical
+                  // axis because Columns are vertical (the cross axis would be
+                  // horizontal).
+                  //
+                  // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+                  // action in the IDE, or press "p" in the console), to see the
+                  // wireframe for each widget.
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      'You have pushed the button this many times:',
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    TextButton(
+                      child: const Text("open login page"),
+                      onPressed: () => Navigator.of(context).pushNamed("login"),
+                      // onPressed: () async {
+                      //   //导航到新路由
+                      //   var result = await Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) {
+                      //       return const NewRoute(
+                      //         text: "我是上个页面的传参哦~",
+                      //       );
+                      //     }),
+                      //   );
+                      //   // ignore: avoid_print
+                      //   print("路由返回值: $result");
+                      // },
+                    ),
+                    const RandomWords(),
+                    Builder(builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Text(
+                          "用户名: ${userProvider.username}",
+                          style: const TextStyle(
+                            // 文本的字体大小20，颜色红色
+                            fontSize: 20,
+                            color: Colors.red,
+                          ),
+                        ),
+                      );
+                    }),
+                    // Image.asset('assets/image/test.jpg', width: 100.0)
+                    Image.network(
+                        'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',
+                        width: 300.0)
+                  ],
+                ),
         ),
         floatingActionButton: userProvider.username == ''
             ? null
@@ -132,12 +158,6 @@ class _HomeRouteState extends State<HomeRoute> {
         // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
-  // This method is rerun every time setState is called, for instance as done
-  // by the _incrementCounter method above.
-  //
-  // The Flutter framework has been optimized to make rerunning build methods
-  // fast, so that you can just rebuild anything that needs updating rather
-  // than having to individually change instances of widgets.
 }
 
 // class MyDrawer extends StatelessWidget {
