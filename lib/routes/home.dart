@@ -59,11 +59,9 @@ class _HomeRouteState extends State<HomeRoute> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Text('您还未登录, 请先登录',
-                        // 下边距30
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.blue,
-                          // 下边距30
                         )),
                     Padding(
                       padding: const EdgeInsets.all(20),
