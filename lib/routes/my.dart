@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/models/user.dart';
 import 'package:provider/provider.dart';
@@ -21,21 +19,11 @@ class _MyRouteState extends State<MyRoute> {
   GlobalKey _formKey = GlobalKey<FormState>();
   bool _nameAutoFocus = true;
 
-  // @override
-  // void initState() {
-  // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
-  // _unameController.text = Global.profile.lastLogin ?? "";
-  // if (_unameController.text.isNotEmpty) {
-  //   _nameAutoFocus = false;
-  // }
-  // super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     // var gm = GmLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('登录')),
+      appBar: AppBar(title: const Text('个人中心')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
