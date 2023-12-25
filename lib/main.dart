@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 export 'models/index.dart';
 import 'routes/index.dart';
+import 'routes/my.dart';
 import 'states/index.dart';
 
 void main() => runApp(const MyApp());
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         home: const HomeRoute(title: 'Flutter Demo Home Page'),
         routes: <String, WidgetBuilder>{
           "login": (context) => const LoginRoute(),
+          "my": (context) => const MyRoute(),
         },
       ),
     );
