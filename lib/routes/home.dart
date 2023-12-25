@@ -109,8 +109,8 @@ class _HomeRouteState extends State<HomeRoute> {
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     TextButton(
-                      child: const Text("open login page"),
-                      onPressed: () => Navigator.of(context).pushNamed("login"),
+                      child: const Text("open my page"),
+                      onPressed: () => Navigator.of(context).pushNamed("my"),
                       // onPressed: () async {
                       //   //导航到新路由
                       //   var result = await Navigator.push(
