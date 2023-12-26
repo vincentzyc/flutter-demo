@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import '../theme/mColors.dart';
+import '../theme/mColors.dart';
 
 class MySetting extends StatelessWidget {
   MySetting({super.key});
@@ -23,7 +23,7 @@ class MySetting extends StatelessWidget {
           separatorBuilder: (BuildContext context, int index) => const Divider(
             height: 1,
             indent: 0,
-            color: Color(0xFFE0E0E0),
+            color: mColors.gray_ss,
           ),
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
