@@ -28,7 +28,7 @@ class _MyRouteState extends State<MyRoute> {
             Expanded(
               child: ListView(
                 children: <Widget>[
-                  const MySetting(),
+                  MySetting(),
                 ],
               ),
             )
