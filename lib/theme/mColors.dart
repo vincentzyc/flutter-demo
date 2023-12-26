@@ -14,4 +14,5 @@ class mColors {
   static const Color progress_line = Color(0xFF77b1e8);
   static const Color auto_buy = Color(0xFFfff2e9);
   static const Color orange = Color(0xFFffb785);
+  static const Color gray_ss = Color(0xFFE0E0E0);
 }
