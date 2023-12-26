@@ -22,7 +22,18 @@ class _MyRouteState extends State<MyRoute> {
       appBar: AppBar(title: const Text('个人中心')),
       body: Padding(
         padding: const EdgeInsets.only(top: 0),
-        child: MyTitle(),
+        child: Column(
+          children: <Widget>[
+            const MyTitle(),
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  const MySetting(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
