@@ -11,7 +11,7 @@ class MyRoute extends StatefulWidget {
   const MyRoute({super.key});
 
   @override
-  _MyRouteState createState() => _MyRouteState();
+  State<MyRoute> createState() => _MyRouteState();
 }
 
 class _MyRouteState extends State<MyRoute> {
