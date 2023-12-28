@@ -11,7 +11,7 @@ class LoginRoute extends StatefulWidget {
   const LoginRoute({super.key});
 
   @override
-  _LoginRouteState createState() => _LoginRouteState();
+  State<LoginRoute> createState() => _LoginRouteState();
 }
 
 class _LoginRouteState extends State<LoginRoute> {
