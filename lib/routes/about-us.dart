@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../states/index.dart';
 import '../widgets/index.dart';
 
-// 新增关于我们页面
 class AboutUsRoute extends StatefulWidget {
   const AboutUsRoute({super.key});
 
@@ -24,7 +23,9 @@ class _AboutUsRouteState extends State<AboutUsRoute> {
         body: Padding(
             padding: const EdgeInsets.only(top: 0),
             child: Column(
-              children: <Widget>[],
+              children: <Widget>[
+                // 版本号，公司名称
+              ],
             )));
   }
 }
