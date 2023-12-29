@@ -33,7 +33,6 @@ class _AboutUsRouteState extends State<AboutUsRoute> {
               ),
             ),
             SizedBox(height: 8.0), // 添加垂直间距
-
             // 版本号
             Text(
               '版本号 1.0.0',
@@ -43,7 +42,6 @@ class _AboutUsRouteState extends State<AboutUsRoute> {
               ),
             ),
             // 其他关于我们的信息可以继续添加
-
             // 其他内容
           ],
         ),
