@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter_demo/models/user.dart';
-// import '../theme/mColors.dart';
+import '../theme/mColors.dart';
 // import 'package:provider/provider.dart';
 
 // import '../states/index.dart';
@@ -23,28 +23,37 @@ class _AboutUsRouteState extends State<AboutUsRoute> {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center, // 主轴（垂直）方向的对齐方式
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               // 公司名称
-              Text(
-                '这是公司名称',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+              ListTile(
+                title: Text('公司名称'),
+                trailing: Text(
+                  '这是公司名称',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              SizedBox(height: 8.0), // 添加垂直间距
+              Divider(
+                height: 1,
+                indent: 0,
+                color: mColors.gray_ss,
+              ),
+              // SizedBox(height: 8.0), // 添加垂直间距
               // 版本号
-              Text(
-                '版本号 1.0.0',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.grey,
+              ListTile(
+                title: Text('版本号'),
+                trailing: Text(
+                  '1.0.0',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              // 其他关于我们的信息可以继续添加
-              // 其他内容
             ],
           ),
         ),
