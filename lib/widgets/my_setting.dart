@@ -31,6 +31,10 @@ class MySetting extends StatelessWidget {
               title: Text(settings[index]['title']),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
+                if (index == 4) {
+                  Navigator.of(context).pushNamed('aboutUs');
+                  return;
+                }
                 showToast(context, '这是提示文字哦~ 当前索引：${index + 1}');
               },
             );
