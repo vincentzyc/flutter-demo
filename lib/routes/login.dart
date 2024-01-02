@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_demo/models/user.dart';
+// import 'package:flutter_demo/models/user.dart';
 import 'package:provider/provider.dart';
 
 import '../states/index.dart';
@@ -15,11 +15,11 @@ class LoginRoute extends StatefulWidget {
 }
 
 class _LoginRouteState extends State<LoginRoute> {
-  TextEditingController _unameController = TextEditingController();
-  TextEditingController _pwdController = TextEditingController();
+  final TextEditingController _unameController = TextEditingController();
+  final TextEditingController _pwdController = TextEditingController();
   bool pwdShow = false;
-  GlobalKey _formKey = GlobalKey<FormState>();
-  bool _nameAutoFocus = true;
+  final GlobalKey _formKey = GlobalKey<FormState>();
+  final bool _nameAutoFocus = true;
 
   // @override
   // void initState() {
@@ -97,8 +97,8 @@ class _LoginRouteState extends State<LoginRoute> {
                         textStyle: MaterialStateProperty.all(
                           const TextStyle(fontSize: 20),
                         )),
-                    child: const Text("登录"),
                     onPressed: _onLogin,
+                    child: const Text("登录"),
                   ),
                 ),
               ),
