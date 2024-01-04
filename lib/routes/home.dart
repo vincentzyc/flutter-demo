@@ -51,7 +51,7 @@ class _HomeRouteState extends State<HomeRoute> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: Center(
+        body: SingleChildScrollView(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: userProvider.username == ''
@@ -142,7 +142,8 @@ class _HomeRouteState extends State<HomeRoute> {
                     // Image.asset('assets/image/test.jpg', width: 100.0)
                     Image.network(
                         'https://static.jetmobo.com/image/content-h5/20220414/1649923427680.jpg',
-                        width: 300.0)
+                        width: 300.0),
+                    const RepoList(),
                   ],
                 ),
         ),
