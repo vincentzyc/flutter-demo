@@ -1,12 +1,17 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+// import 'dart:convert';
 
 final dio = Dio();
 
 void getHttp() async {
-  final response = await dio.get('https://dart.dev');
+  // final response = await dio.get('https://dart.dev');
+
+  // var response = await dio.get('https://pv.sohu.com/cityjson');
+  var response = await dio.get('https://restapi.amap.com/v3/ip?parameters');
   print(response);
+
 }
 
 class RandomWords extends StatelessWidget {
