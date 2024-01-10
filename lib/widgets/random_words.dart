@@ -45,10 +45,54 @@ class _RandomWordsState extends State<RandomWords> {
   }
 
   Future<void> _updateIpCity() async {
+    // 添加loading动画
+    showLoadingDialog('Loading data...');
     String newIpCity = await getHttp(); // 执行异步操作
+    hideLoadingDialog();
     setState(() {
       ipCity = newIpCity; // 同步更新状态
       print(ipCity);
     });
+  }
+
+  void showLoadingDialog(String loadingText) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return LoadingWidget(loadingText: loadingText);
+      },
+    );
+  }
+
+  void hideLoadingDialog() {
+    Navigator.of(context).pop();
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  final String loadingText;
+
+  const LoadingWidget({super.key, this.loadingText = 'Loading...'});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black54,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CircularProgressIndicator(),
+          const SizedBox(height: 16),
+          Text(
+            loadingText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
