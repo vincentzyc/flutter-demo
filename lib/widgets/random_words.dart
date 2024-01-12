@@ -9,9 +9,6 @@ import 'package:flutter_demo/widgets/loading.dart';
 final dio = Dio();
 
 Future<String> getHttp() async {
-  // final response = await dio.get('https://dart.dev');
-
-  // var response = await dio.get('https://pv.sohu.com/cityjson');
   Response response = await dio.get('https://www.ip.cn/api/index?ip&type=0');
 
   IpAddress ipAddress = ipAddressFromJson(response.toString());
