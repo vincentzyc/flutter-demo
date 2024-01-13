@@ -4,6 +4,7 @@ export 'models/index.dart';
 import 'routes/index.dart';
 import 'routes/my.dart';
 import 'routes/about_us.dart';
+import 'routes/about_page.dart';
 import 'states/index.dart';
 
 void main() => runApp(const MyApp());
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
           "login": (context) => const LoginRoute(),
           "my": (context) => const MyRoute(),
           "aboutUs": (context) => const AboutUsRoute(),
+          "aboutPage": (context) => AboutPage(),
         },
       ),
     );
