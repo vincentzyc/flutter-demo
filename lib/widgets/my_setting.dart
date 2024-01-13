@@ -32,7 +32,7 @@ class MySetting extends StatelessWidget {
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 if (index == 4) {
-                  Navigator.of(context).pushNamed('aboutUs');
+                  Navigator.of(context).pushNamed('aboutPage');
                   return;
                 }
                 showToast(context, '这是提示文字哦~ 当前索引：${index + 1}');
