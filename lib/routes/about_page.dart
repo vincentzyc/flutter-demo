@@ -99,14 +99,23 @@ class AboutPageViewState extends State<AboutPage> {
                       ],
                     ),
                   ),
-                  // DivideLine(mmargin: 20),
-                  // Container(
-                  //   child: Row(
-                  //     children: [Expanded(child: Text("公司地址",style: TextStyle(fontSize: 12))), Text("广东省广州市天河区棠下智汇Park-E303",style: TextStyle(fontSize: 12,color: Colors.grey[400]),)],
-                  //   ),
-                  //   padding: EdgeInsets.only(
-                  //       top: 15, bottom: 15, left: 20, right: 20),
-                  // ),
+                  const DivideLine(mmargin: 20),
+                  Container(
+                    padding: const EdgeInsets.only(
+                        top: 15, bottom: 15, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                            child:
+                                Text("公司地址", style: TextStyle(fontSize: 12))),
+                        Text(
+                          "广东省广州市",
+                          style:
+                              TextStyle(fontSize: 12, color: Colors.grey[400]),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             )
