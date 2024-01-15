@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/widgets/divide_line.dart';
 
 class AboutPage extends StatefulWidget {
+  const AboutPage({super.key});
+
   @override
   State<AboutPage> createState() => AboutPageViewState();
 }
