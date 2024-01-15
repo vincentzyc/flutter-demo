@@ -31,49 +31,51 @@ class AboutPageViewState extends State<AboutPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Color(0xFF4490f6),
+        backgroundColor: const Color(0xFF4490f6),
         elevation: 0,
-        title: Text("关于我们"),
+        title: const Text("关于我们"),
         centerTitle: true,
       ),
       body: Container(
         width: double.infinity,
-        color: Color(0xFFf0f0f0),
+        color: const Color(0xFFf0f0f0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             const Image(
                 width: 110,
                 height: 110,
                 image: AssetImage(("assets/image/icon1.png"))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
-              "版本号：" + version,
-              style: TextStyle(
+              "版本号：$version",
+              style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF323232),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Column(
                 children: [
                   Container(
+                    padding: const EdgeInsets.only(
+                        top: 15, bottom: 15, left: 20, right: 20),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                             child:
                                 Text("官方电话", style: TextStyle(fontSize: 12))),
                         Text("400-697-0288",
@@ -81,14 +83,14 @@ class AboutPageViewState extends State<AboutPage> {
                                 fontSize: 13, color: Colors.grey[400]))
                       ],
                     ),
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 15, left: 20, right: 20),
                   ),
-                  DivideLine(mmargin: 20),
+                  const DivideLine(mmargin: 20),
                   Container(
+                    padding: const EdgeInsets.only(
+                        top: 15, bottom: 15, left: 20, right: 20),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                             child:
                                 Text("合作方式", style: TextStyle(fontSize: 12))),
                         Text("intercom_hltx@163.com",
@@ -96,8 +98,6 @@ class AboutPageViewState extends State<AboutPage> {
                                 fontSize: 12, color: Colors.grey[400]))
                       ],
                     ),
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 15, left: 20, right: 20),
                   ),
                   // DivideLine(mmargin: 20),
                   // Container(
