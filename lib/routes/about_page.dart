@@ -25,7 +25,6 @@ class AboutPageViewState extends State<AboutPage> {
   //   });
   // }
 
-  // #docregion webview_widget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,5 +123,4 @@ class AboutPageViewState extends State<AboutPage> {
       ),
     );
   }
-// #enddocregion webview_widget
 }
