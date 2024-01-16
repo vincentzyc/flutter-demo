@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/widgets/divide_line.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -9,21 +10,20 @@ class AboutPage extends StatefulWidget {
 }
 
 class AboutPageViewState extends State<AboutPage> {
-  String version = "1.0.0";
+  String version = "0.0.1";
 
   @override
   void initState() {
     super.initState();
-    // getversion();
+    getversion();
   }
 
-  // getversion () async {
-  //   PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  //   version = packageInfo.version;
-  //   setState(() {
-
-  //   });
-  // }
+  getversion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      version = packageInfo.version;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
