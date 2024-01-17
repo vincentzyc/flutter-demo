@@ -43,10 +43,17 @@ class AboutPageViewState extends State<AboutPage> {
             const SizedBox(
               height: 40,
             ),
-            const Image(
-                width: 110,
-                height: 110,
-                image: AssetImage(("assets/image/icon1.png"))),
+            SizedBox(
+              width: 110,
+              height: 110,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  "assets/image/test.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             const SizedBox(
               height: 10,
             ),
