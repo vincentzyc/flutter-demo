@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_demo/models/user.dart';
 import '../theme/mColors.dart';
-// import 'package:provider/provider.dart';
-
-// import '../states/index.dart';
-// import '../widgets/index.dart';
 
 class AboutUsRoute extends StatefulWidget {
   const AboutUsRoute({super.key});

@@ -124,7 +124,7 @@ class AboutPageViewState extends State<AboutPage> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

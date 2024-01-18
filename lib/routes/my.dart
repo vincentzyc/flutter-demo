@@ -37,13 +37,4 @@ class _MyRouteState extends State<MyRoute> {
       ),
     );
   }
-
-  void _onLogin() async {
-    // 验证表单字段
-    // if ((_formKey.currentState as FormState).validate()) {
-    //   final userProvider = Provider.of<UserProvider>(context, listen: false);
-    //   userProvider.setUsername(_unameController.text);
-    //   Navigator.of(context).pop();
-    // }
-  }
 }
