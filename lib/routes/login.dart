@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
@@ -5,7 +8,11 @@ import 'package:flutter/services.dart';
 // import 'package:flutter_demo/models/user.dart';
 import 'package:provider/provider.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../states/index.dart';
+
+final dio = Dio();
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({super.key});
@@ -112,6 +119,25 @@ class _LoginRouteState extends State<LoginRoute> {
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
+      var formData = {
+        "username": _unameController.text,
+        "password": _pwdController.text
+      };
+      var requestBody = {
+        "data": jsonEncode(formData), // 待加密数据，json字符串格式
+        "expireSeconds": 3600, // 过期时间，单位秒
+      };
+
+      Response response = await dio.post(
+          'http://test-token.jetmobo.com/service/token/generate',
+          data: requestBody);
+
+      var token = response.data['data']['token'];
+
+      // 存储 token
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', token);
+
       // UserModel userModel = Provider.of<UserModel>(context, listen: false);
       final userProvider = Provider.of<UserProvider>(context, listen: false);
       //  验证通过
