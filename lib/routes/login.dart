@@ -116,23 +116,29 @@ class _LoginRouteState extends State<LoginRoute> {
     );
   }
 
+  Future<String> getToken() async {
+    // 获取token
+    var formData = {
+      "username": _unameController.text,
+      "password": _pwdController.text
+    };
+    var requestBody = {
+      "data": jsonEncode(formData), // 待加密数据，json字符串格式
+      "expireSeconds": 3600, // 过期时间，单位秒
+    };
+
+    Response response = await dio.post(
+        'http://test-token.jetmobo.com/service/token/generate',
+        data: requestBody);
+
+    var token = response.data['data']['token'];
+    return token;
+  }
+
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
-      var formData = {
-        "username": _unameController.text,
-        "password": _pwdController.text
-      };
-      var requestBody = {
-        "data": jsonEncode(formData), // 待加密数据，json字符串格式
-        "expireSeconds": 3600, // 过期时间，单位秒
-      };
-
-      Response response = await dio.post(
-          'http://test-token.jetmobo.com/service/token/generate',
-          data: requestBody);
-
-      var token = response.data['data']['token'];
+      String token = await getToken();
 
       // 存储 token
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -143,30 +149,6 @@ class _LoginRouteState extends State<LoginRoute> {
       //  验证通过
       userProvider.setUsername(_unameController.text);
       Navigator.of(context).pop();
-      //   if ((_formKey.currentState as FormState).validate()) {
-      //     // showLoading(context);
-      //     User? user;
-      //     try {
-      //       user = await Git(context)
-      //           .login(_unameController.text, _pwdController.text);
-      //       // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
-      //       Provider.of<UserModel>(context, listen: false).user = user;
-      //     } on DioError catch (e) {
-      //       //登录失败则提示
-      //       if (e.response?.statusCode == 401) {
-      //         showToast('账号或密码不正确');
-      //       } else {
-      //         showToast(e.toString());
-      //       }
-      //     } finally {
-      //       // 隐藏loading框
-      //       Navigator.of(context).pop();
-      //     }
-      //     //登录成功则返回
-      //     if (user != null) {
-      //       Navigator.of(context).pop();
-      //     }
-      //   }
     }
   }
 }
