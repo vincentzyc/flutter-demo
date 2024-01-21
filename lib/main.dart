@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 export 'models/index.dart';
-import 'routes/index.dart';
-import 'routes/my.dart';
-import 'routes/about_us.dart';
-import 'routes/about_page.dart';
-import 'states/index.dart';
+import './routes/index.dart';
+import './states/index.dart';
 
 void main() => runApp(const MyApp());
 
