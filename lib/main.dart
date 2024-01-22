@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           "login": (context) => const LoginRoute(),
           "my": (context) => const MyRoute(),
           "aboutUs": (context) => const AboutUsRoute(),
-          "aboutPage": (context) => AboutPage(),
+          "aboutPage": (context) => const AboutPage(),
         },
       ),
     );

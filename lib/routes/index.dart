@@ -1,5 +1,5 @@
 export 'home.dart';
 export 'login.dart';
-import 'my.dart';
-import 'about_us.dart';
-import 'about_page.dart';
+export 'my.dart';
+export 'about_us.dart';
+export 'about_page.dart';
