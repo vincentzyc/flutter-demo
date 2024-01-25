@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_demo/utils/api_util.dart';
 // import 'package:flutter_demo/models/user.dart';
 import 'package:provider/provider.dart';
 
@@ -127,9 +128,7 @@ class _LoginRouteState extends State<LoginRoute> {
       "expireSeconds": 3600, // 过期时间，单位秒
     };
 
-    Response response = await dio.post(
-        'http://test-token.jetmobo.com/service/token/generate',
-        data: requestBody);
+    Response response = await dio.post(generateToken, data: requestBody);
 
     var token = response.data['data']['token'];
     return token;

@@ -1,0 +1,1 @@
+const generateToken = "http://test-token.jetmobo.com/service/token/generate";
