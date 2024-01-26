@@ -1,1 +1,1 @@
-const generateToken = "http://test-token.jetmobo.com/service/token/generate";
+const generateToken = "https://token.jetmobo.com/service/token/generate";
