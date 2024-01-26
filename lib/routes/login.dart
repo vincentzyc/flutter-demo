@@ -87,7 +87,7 @@ class _LoginRouteState extends State<LoginRoute> {
                 ],
                 //校验密码（不能为空）
                 validator: (v) {
-                  // return v == null || v.trim().isNotEmpty ? null : '密码必填';
+                  if (v == null || v.trim().isNotEmpty) return '请输入密码';
                   return v!.trim().length > 5 ? null : "密码不能少于6位";
                 },
               ),
