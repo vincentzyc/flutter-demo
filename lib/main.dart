@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 export 'models/index.dart';
 import './routes/index.dart';
 import './states/index.dart';
+import 'dart:io' show Platform;
 
 void main() => runApp(const MyApp());
 
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String str = Platform.isAndroid ? "Android" : "IOS";
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
@@ -37,12 +40,12 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomeRoute(title: 'Flutter Demo Home Page'),
+        home: HomeRoute(title: 'Flutter Demo Home Page$str'),
         routes: <String, WidgetBuilder>{
           "login": (context) => const LoginRoute(),
           "my": (context) => const MyRoute(),
           "aboutUs": (context) => const AboutUsRoute(),
-          "aboutPage": (context) => AboutPage(),
+          "aboutPage": (context) => const AboutPage(),
         },
       ),
     );
