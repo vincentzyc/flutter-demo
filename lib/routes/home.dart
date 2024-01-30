@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../states/index.dart';
+import '../utils/api_util.dart';
 import '../widgets/index.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -16,6 +19,8 @@ class HomeRoute extends StatefulWidget {
 
 class _HomeRouteState extends State<HomeRoute> {
   late Future<bool> isLoggedInFuture;
+  String token = '';
+  String username = '';
 
   @override
   void initState() {
@@ -25,16 +30,21 @@ class _HomeRouteState extends State<HomeRoute> {
 
   Future<bool> checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // 添加3秒延迟
+    // 添加2秒延迟
     await Future.delayed(const Duration(seconds: 2));
-    String? token = prefs.getString('token');
+    String? prefToken = prefs.getString('token');
+    if (prefToken != null) token = prefToken;
+    dynamic tokenIsValid = await checkToken(token);
+    if (tokenIsValid == false) return false;
+    username = tokenIsValid['username'];
     print(token);
-    return token != null;
+    return true;
   }
 
   int _counter = 0;
 
   void _incrementCounter() {
+    checkToken(token);
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -128,7 +138,7 @@ class _HomeRouteState extends State<HomeRoute> {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 20),
                             child: Text(
-                              "用户名: ${userProvider.username}",
+                              "用户名: $username",
                               style: const TextStyle(
                                 // 文本的字体大小20，颜色红色
                                 fontSize: 20,
