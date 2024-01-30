@@ -1,6 +1,6 @@
-import 'dart:convert';
+// import 'dart:convert';
 
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../states/index.dart';
 
-final dio = Dio();
+// final dio = Dio();
 
 class LoginRoute extends StatefulWidget {
   const LoginRoute({super.key});
@@ -105,7 +105,7 @@ class _LoginRouteState extends State<LoginRoute> {
                         textStyle: MaterialStateProperty.all(
                           const TextStyle(fontSize: 20),
                         )),
-                    onPressed: _onLogin,
+                    onPressed: () => _onLogin(context),
                     child: const Text("登录"),
                   ),
                 ),
@@ -117,27 +117,31 @@ class _LoginRouteState extends State<LoginRoute> {
     );
   }
 
-  Future<String> getToken() async {
-    // 获取token
-    var formData = {
-      "username": _unameController.text,
-      "password": _pwdController.text
-    };
-    var requestBody = {
-      "data": jsonEncode(formData), // 待加密数据，json字符串格式
-      "expireSeconds": 3600, // 过期时间，单位秒
-    };
+  // Future<String> getToken() async {
+  //   // 获取token
+  //   var formData = {
+  //     "username": _unameController.text,
+  //     "password": _pwdController.text
+  //   };
+  //   var requestBody = {
+  //     "data": jsonEncode(formData), // 待加密数据，json字符串格式
+  //     "expireSeconds": 3600, // 过期时间，单位秒
+  //   };
 
-    Response response = await dio.post(generateToken, data: requestBody);
+  //   Response response = await dio.post(generateToken, data: requestBody);
 
-    var token = response.data['data']['token'];
-    return token;
-  }
+  //   var token = response.data['data']['token'];
+  //   return token;
+  // }
 
-  void _onLogin() async {
+  void _onLogin(context) async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
-      String token = await getToken();
+      var formData = {
+        "username": _unameController.text,
+        "password": _pwdController.text
+      };
+      String token = await getToken(formData);
 
       // 存储 token
       SharedPreferences prefs = await SharedPreferences.getInstance();
