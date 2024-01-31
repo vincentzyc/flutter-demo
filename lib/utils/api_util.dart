@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:dio/dio.dart';
 
 import '../models/index.dart';
@@ -14,8 +12,8 @@ const validateTokenUrl = 'https://token.jetmobo.com/service/token/validate';
 Future<String> getToken(data) async {
   // 获取token
   var requestBody = {
-    "data": jsonEncode(data), // 待加密数据，json字符串格式
-    "expireSeconds": 3600, // 过期时间，单位秒
+    "data": jsonEncode(data),
+    "expireSeconds": 60 * 60 * 24 * 30, // 过期时间一个月，单位秒
   };
 
   Response response = await dio.post(generateTokenUrl, data: requestBody);
@@ -25,9 +23,7 @@ Future<String> getToken(data) async {
 }
 
 Future<dynamic> checkToken(String token) async {
-  var requestBody = {
-    "token": token,
-  };
+  var requestBody = {"token": token};
   Response response = await dio.post(validateTokenUrl, data: requestBody);
   ValidateToken validateToken = ValidateToken.fromMap(response.data);
   if (validateToken.code != '0000') return false;
