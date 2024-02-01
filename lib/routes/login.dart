@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../states/index.dart';
+import '../routes/index.dart';
 
 // final dio = Dio();
 
@@ -117,23 +118,6 @@ class _LoginRouteState extends State<LoginRoute> {
     );
   }
 
-  // Future<String> getToken() async {
-  //   // 获取token
-  //   var formData = {
-  //     "username": _unameController.text,
-  //     "password": _pwdController.text
-  //   };
-  //   var requestBody = {
-  //     "data": jsonEncode(formData), // 待加密数据，json字符串格式
-  //     "expireSeconds": 3600, // 过期时间，单位秒
-  //   };
-
-  //   Response response = await dio.post(generateToken, data: requestBody);
-
-  //   var token = response.data['data']['token'];
-  //   return token;
-  // }
-
   void _onLogin(context) async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
@@ -151,7 +135,8 @@ class _LoginRouteState extends State<LoginRoute> {
       final userProvider = Provider.of<UserProvider>(context, listen: false);
       //  验证通过
       userProvider.setUsername(_unameController.text);
-      Navigator.of(context).pop();
+      Navigator.of(context).pop('Hello from Page login page');
+      // Navigator.of(context).popAndPushNamed(HomeRoute);
     }
   }
 }
