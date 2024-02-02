@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../states/index.dart';
 import '../utils/api_util.dart';
 import '../widgets/index.dart';
+import '../routes/index.dart';
 
 class HomeRoute extends StatefulWidget {
   const HomeRoute({super.key, required this.title});
@@ -178,8 +179,17 @@ class _HomeRouteState extends State<HomeRoute> {
                                     const TextStyle(fontSize: 20),
                                   )),
                               child: const Text("去登录"),
-                              onPressed: () =>
-                                  Navigator.of(context).pushNamed("login"),
+                              onPressed: () async {
+                                //导航到新路由
+                                var result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginRoute()),
+                                );
+                                if (result != null) {
+                                  isLoggedInFuture = checkLoginStatus();
+                                }
+                              },
                             ),
                           ),
                         ),
