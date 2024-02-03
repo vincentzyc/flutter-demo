@@ -9,8 +9,8 @@ class LoadingDialog {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return WillPopScope(
-          onWillPop: () async => false,
+        return PopScope(
+          canPop: false,
           child: Dialog(
             backgroundColor: Colors.transparent,
             child: Container(
