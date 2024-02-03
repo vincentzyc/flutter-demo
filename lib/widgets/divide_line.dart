@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DivideLine extends StatefulWidget {
   final double mmargin;
 
-  const DivideLine({required this.mmargin});
+  const DivideLine({super.key, required this.mmargin});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,8 +17,7 @@ class DivideLineView extends State<DivideLine> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 0.5,
-      margin: EdgeInsets.only(
-          left: this.widget.mmargin, right: this.widget.mmargin),
+      margin: EdgeInsets.only(left: widget.mmargin, right: widget.mmargin),
       color: Colors.grey[400],
     );
   }
