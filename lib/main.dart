@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
-        // ChangeNotifierProvider(create: (_) => UserModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomeRoute(title: 'Flutter Demo Home Page$str'),
+        home: HomeRoute(title: 'Flutter Demo Home Page $str'),
         routes: <String, WidgetBuilder>{
           "login": (context) => const LoginRoute(),
           "my": (context) => const MyRoute(),
